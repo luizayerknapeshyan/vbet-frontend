@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Searchbar from "./components/Searchbar/Searchbar";
 import DataTable from "./components/Table/DataTable";
 
@@ -21,28 +21,35 @@ const DUMMY_DATA = {
   ],
 };
 
-
 const App = () => {
+  const [data, setData] = useState();
 
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-
-  }, []);
-
-  const searchRequestHandler = (skin, language, section, level, startDate, endDate, count) => {
-    fetch(`http://127.0.0.1:4563/get-data?level=${level}&language=${language}&schema=${section}&skin=${skin}&limit=${count}&end_date=${endDate}&start_date=${startDate}`, {
-      method: "GET",
-      mode: 'cors',
-  })
-      .then(response => response.json()).then(responseJson => setData(responseJson.data));
+  const searchRequestHandler = (
+    skin,
+    language,
+    section,
+    level,
+    startDate,
+    endDate,
+    count
+  ) => {
+    fetch(
+      `http://127.0.0.1:4564/get-data?level=${level}&language=${language}&schema=${section}&skin=${skin}&limit=${count}&end_date=${endDate}&start_date=${startDate}`,
+      {
+        method: "GET",
+        mode: "cors",
+      }
+    )
+      .then((response) => response.json())
+      .then((responseJson) => setData(responseJson.data));
   };
 
+
   return (
-    <>
+    <div className="container">
       <Searchbar onSearch={searchRequestHandler} />
       {data && <DataTable data={data} />}
-    </>
+    </div>
   );
 };
 

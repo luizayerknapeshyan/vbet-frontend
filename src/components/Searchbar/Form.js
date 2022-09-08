@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
@@ -13,7 +11,7 @@ const Form = (props) => {
         <Select
           labelId="skin"
           id="skin"
-          sx={{ width: "9rem" }}
+          sx={{ width: "7.5rem" }}
           label="Skin"
           value={props.skin}
           onChange={props.onSkinChange}
@@ -26,7 +24,7 @@ const Form = (props) => {
         <Select
           labelId="language"
           id="language"
-          sx={{ width: "9rem" }}
+          sx={{ width: "7.5rem" }}
           label="Language"
           value={props.language}
           onChange={props.onLanguageChange}
@@ -45,7 +43,7 @@ const Form = (props) => {
         <Select
           labelId="section"
           id="section"
-          sx={{ width: "9rem" }}
+          sx={{ width: "7.5rem" }}
           label="Section"
           value={props.section}
           onChange={props.onSectionChange}
@@ -59,7 +57,7 @@ const Form = (props) => {
         <Select
           labelId="level"
           id="level"
-          sx={{ width: "9rem" }}
+          sx={{ width: "7.5rem" }}
           label="Level"
           value={props.level}
           onChange={props.onLevelChange}

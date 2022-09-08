@@ -47,16 +47,15 @@ const Searchbar = (props) => {
     setCount(event.target.value);
   };
 
-  // const searchRequestHandler = () => {
-  //   fetch("https://google.com")
-  //     .then((response) => response)
-  //     .then((data) => {
-  //       console.log("Success:", data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error:", error);
-  //     });
-  // };
+  const resetHandler = () => {
+    // setSkin("");
+    // setLanguage("");
+    // setSection("");
+    setLevel("");
+    setStartDate("");
+    setEndDate("");
+    setCount("");
+  };
 
   if (skin !== "" && language !== "" && section !== "") {
     enableButton = true;
@@ -65,7 +64,7 @@ const Searchbar = (props) => {
   return (
     <Card sx={{ marginBottom: "3rem", width: "90rem" }}>
       <CardContent
-        sx={{ display: "flex", justifyContent: "space-around" }}
+        sx={{ display: "flex", justifyContent: "space-evenly" }}
         component={Paper}
       >
         <Form
@@ -85,13 +84,14 @@ const Searchbar = (props) => {
           onEndDateChange={endDateChangeHandler}
         />
         <TextField
-          sx={{ width: "7rem" }}
+          sx={{ width: "6rem" }}
           label="Number"
           type="number"
           InputProps={{ inputProps: { min: 1 } }}
           value={count}
           onChange={countChangeHandler}
         />
+        <Button onClick={resetHandler}>Reset</Button>
         <Button
           disabled={!enableButton}
           onClick={() =>
